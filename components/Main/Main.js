@@ -4,6 +4,7 @@ import Today from "../../components/Today/Today";
 import Dashboard from "../../components/Dashboard/Dashboard";
 import { getWeather, getWeatherFiveDays } from "../../utilities/fetch-data";
 import { useEffect, useState } from "react";
+import Loading from "../Loading/Loading";
 
 export default function Main() {
   const [todayWeather, setTodayWeather] = useState({});
@@ -59,10 +60,13 @@ export default function Main() {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading />
   }
 
   return (
+
+    // <Loading />
+
     <main id="main">
       <Today
         weather={todayWeather}
