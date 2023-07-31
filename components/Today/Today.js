@@ -3,9 +3,9 @@ import Image from "next/image";
 import "./Today.css";
 import formatDate from "../../utilities/date";
 import weatherIcon from "../../utilities/weather";
-import { useRef , useState } from "react";
+import { useRef, useState } from "react";
 
-export default function Today({ weather, handleCityBySelect, handleCityByInput }) {
+export default function Today({ weather, handleCityByInput }) {
   const [main, setMain] = useState(false);
   const [search, setSearch] = useState(true);
   const formattedDate = formatDate();
@@ -194,15 +194,15 @@ export default function Today({ weather, handleCityBySelect, handleCityByInput }
         </div>
 
         <div className="countrys">
-          <div onClick={handleCityBySelect}>
+          <div onClick={() => handleCityByInput(null, 'London')}>
             <span>London</span>
             <span className="selector-city">&gt;</span>
           </div>
-          <div onClick={handleCityBySelect}>
+          <div onClick={() => handleCityByInput(null, 'Barcelona')}>
             <span>Barcelona</span>
             <span className="selector-city">&gt;</span>
           </div>
-          <div onClick={handleCityBySelect}>
+          <div onClick={() => handleCityByInput(null, 'Long Beach')}>
             <span>Long Beach</span>
             <span className="selector-city">&gt;</span>
           </div>

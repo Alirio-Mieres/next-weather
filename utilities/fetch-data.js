@@ -32,7 +32,13 @@ export function getWeatherFiveDays(city) {
   const forecastURL = `${base}forecast?q=${search}&units=metric&APPID=${key}`;
 
   return fetchData(forecastURL).then(data => {
-    const listForecast = data.list.filter(d => d.dt_txt.includes("18:00:00"));
+    const listForecast = data.list.filter(d => d.dt_txt.includes("18:00:00") && d.dt_txt.slice(0, 10) !== new Date().toISOString().slice(0, 10));
+
+    if (listForecast.length < 5) {
+      const listForecast = data.list.filter(d => d.dt_txt.includes("15:00:00") && d.dt_txt.slice(0, 10) !== new Date().toISOString().slice(0, 10));
+      return listForecast;
+    }
+
     return listForecast;
   }).catch(error => {
     console.error(error);

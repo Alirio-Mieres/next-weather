@@ -12,6 +12,19 @@ export default function Main() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+
+    // window.addEventListener('load', () => {
+    //   if (navigator.geolocation) {
+    //     navigator.geolocation.getCurrentPosition(position => {
+    //       console.log(position);
+    //     });
+    //     lon = position.coords.longitude;
+    //     lat = position.coords.latitude;
+    //     const url = `${api.base}weather?lat=${lat}&lon=${lon}&units=metric&APPID=${api.key}`;
+    //   }
+    // });
+
+
     Promise.all([getWeather(), getWeatherFiveDays()])
       .then(([todayWeather, fiveDaysWeather]) => {
         setTodayWeather(todayWeather);
@@ -24,24 +37,17 @@ export default function Main() {
       });
   }, []);
 
-  const handleCityBySelect = (e) => {
-    setLoading(true);
-    const city = e.target.children[0].innerText;
-    Promise.all([getWeather(city), getWeatherFiveDays(city)])
-      .then(([todayWeather, fiveDaysWeather]) => {
-        setTodayWeather(todayWeather);
-        setFiveDaysWeather(fiveDaysWeather);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error(err);
-        setLoading(false);
-      });
-  };
 
-  const handleCityByInput = (input) => {
+  const handleCityByInput = (input, select) => {
     setLoading(true);
-    const city = input.current.value;
+    let city;
+
+    if (input) {
+      city = input.current.value;
+    } else {
+      city = select;
+    }
+
     Promise.all([getWeather(city), getWeatherFiveDays(city)])
       .then(([todayWeather, fiveDaysWeather]) => {
         if (todayWeather.cod !== "404" && fiveDaysWeather.cod !== "404") {
@@ -65,12 +71,9 @@ export default function Main() {
 
   return (
 
-    // <Loading />
-
     <main id="main">
       <Today
         weather={todayWeather}
-        handleCityBySelect={handleCityBySelect}
         handleCityByInput={handleCityByInput}
       />
       <Dashboard today={todayWeather} weather={fiveDaysWeather} />

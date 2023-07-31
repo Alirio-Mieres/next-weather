@@ -18,7 +18,7 @@ export default function Dashboard({ weather }) {
       </div>
       <div>
         <span>{maxTemp} °C</span>
-        <span>{minTemp} °C</span>
+        <span className="second-grade">{minTemp} °C</span>
       </div>
     </div>
   );

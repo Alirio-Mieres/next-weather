@@ -1,7 +1,14 @@
 export default function formatDate(info) {
-  const today = new Date();
-  const tomorrow = new Date(today);
-  tomorrow.setDate(tomorrow.getDate() + 1);
+
+  const dayNames = [
+    "Sun",
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat",
+  ]
 
   // create an array of month names
   const monthNames = [
@@ -20,16 +27,21 @@ export default function formatDate(info) {
   ];
 
   // create a new date object
-  const date = info ? new Date(info) : new Date();
+  const infoDate = info ? new Date(info) : new Date();
 
-  if (date.toDateString() === tomorrow.toDateString()) {
+  // check if the date is today
+  const today = new Date();
+  const tomorrow = new Date(today);
+  tomorrow.setDate(tomorrow.getDate() + 1);
+
+
+  if (infoDate.toISOString().slice(0, 10) === tomorrow.toISOString().slice(0, 10)) {
     return "Tomorrow";
   }
 
-  // format the date as "Fri, 5 Jun"
-  const formattedDate = `${date.toString().slice(0, 3)}, ${date.getDate()} ${
-    monthNames[date.getMonth()]
-  }`;
+  const formattedDate = `${dayNames[infoDate.getDay()]}, ${infoDate.getDate()} ${monthNames[infoDate.getMonth()]
+    }`;
+
 
   return formattedDate;
 }

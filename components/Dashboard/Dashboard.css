@@ -15,7 +15,7 @@
   padding-top: 50px;
 }
 
-.card-container > .card:last-child {
+.card-container>.card:last-child {
   /* order: -1; */
   align-self: flex-end;
   /* background-color: white; */
@@ -33,17 +33,10 @@
   .card-container {
     padding-top: 0;
   }
+}
 
-  /* .card-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        gap: 0;
-        margin: 0;
-        margin-bottom: 50px;
-        max-width: 700px;
-        margin: auto;
-    } */
+.hidden {
+  display: none;
 }
 
 @media screen and (min-width: 1240px) {
@@ -51,10 +44,32 @@
     max-width: 80%;
     margin: auto;
   }
+
+  /*Buttons grades*/
+
+  /* .button-grades {
+    align-self: stretch;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  } */
+
+  /* .button-grades>button {
+    color: white;
+    border-radius: 50%;
+    padding: 0.8em;
+    border: none;
+  } */
+
+  /* .hidden {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  } */
 }
 
 
-@media screen and (min-width: 1600px) { 
+@media screen and (min-width: 1600px) {
   .dash-container {
     max-width: 60%;
     margin: auto;

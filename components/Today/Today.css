@@ -104,13 +104,6 @@ p {
 
 .today-info > div {
   font-size: 1.5rem;
-  /* font-weight: 600;
-    color: #e7e7eb; */
-  /* align-self: flex-start; */
-  /* padding: 20px; */
-  /* display: flex; */
-  /* align-items: start; */
-  /* justify-content: center; */
 }
 
 .today-footer > div:last-child {

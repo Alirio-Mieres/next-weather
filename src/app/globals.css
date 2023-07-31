@@ -1,20 +1,19 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-@media screen and (min-width: 768px) {
+  @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600&display=swap');
 
-  #main {
-    display: flex;
-    /* align-items: center;
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+  }
+
+  @media screen and (min-width: 768px) {
+
+    #main {
+      display: flex;
+      /* align-items: center;
     justify-content: center; */
-    /* max-width: 100%; */
+      /* max-width: 100%; */
+    }
+
   }
-  /* .today-section {
-    display: inline-flex;
-  }
-  #dashboard {
-    display: inline-flex;
-  } */
-}
