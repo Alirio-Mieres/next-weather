@@ -91,7 +91,6 @@ p {
   justify-content: space-evenly;
   padding: 10px 10px;
   gap: 0.5rem;
-  /* background-color: #1e213a; */
 }
 
 .today-info {
@@ -104,6 +103,11 @@ p {
 
 .today-info > div {
   font-size: 1.5rem;
+  display: flex;
+}
+
+.today-info > div > span {
+  height: 40px;
 }
 
 .today-footer > div:last-child {
