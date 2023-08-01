@@ -12,19 +12,6 @@ export default function Main() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-
-    // window.addEventListener('load', () => {
-    //   if (navigator.geolocation) {
-    //     navigator.geolocation.getCurrentPosition(position => {
-    //       console.log(position);
-    //     });
-    //     lon = position.coords.longitude;
-    //     lat = position.coords.latitude;
-    //     const url = `${api.base}weather?lat=${lat}&lon=${lon}&units=metric&APPID=${api.key}`;
-    //   }
-    // });
-
-
     Promise.all([getWeather(), getWeatherFiveDays()])
       .then(([todayWeather, fiveDaysWeather]) => {
         setTodayWeather(todayWeather);
@@ -36,7 +23,6 @@ export default function Main() {
         setLoading(false);
       });
   }, []);
-
 
   const handleCityByInput = (input, select) => {
     setLoading(true);
@@ -66,16 +52,12 @@ export default function Main() {
   };
 
   if (loading) {
-    return <Loading />
+    return <Loading />;
   }
 
   return (
-
     <main id="main">
-      <Today
-        weather={todayWeather}
-        handleCityByInput={handleCityByInput}
-      />
+      <Today weather={todayWeather} handleCityByInput={handleCityByInput} />
       <Dashboard today={todayWeather} weather={fiveDaysWeather} />
     </main>
   );
